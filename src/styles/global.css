@@ -1,0 +1,32 @@
+@import "tailwindcss" important;
+@font-face {
+  font-family: "AMX Black";
+  src: url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.woff2?") format("eot"), url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.woff2") format("woff2"), url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.woff") format("woff"), url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.woff2") format("truetype");
+}
+@theme {
+  --font-roboto: "Roboto", sans-serif; 
+  --font-amx-bold: "AMX", sans-serif;
+  --font-amx-regular: 'AMX Regular', sans-serif;
+  --font-amx-medium: 'AMX Medium', sans-serif;
+  --font-amx-black: 'AMX Black', sans-serif;
+  --breakpoint-2xl: 94rem;
+  --breakpoint-container-2xl: 1440px;
+  --color-claro: #DA291C;
+  --color-claro-dark: #9F1C12;
+}
+
+@utility container {
+  @media (width >= theme(--breakpoint-xl)) {
+    max-width: 1280px;
+  }
+  @media (width >= theme(--breakpoint-2xl)) {
+    max-width: var(--breakpoint-container-2xl);
+  }
+}
+
+:root{
+  --swiper-pagination-bullet-width: 10px;
+  --swiper-pagination-bullet-height: 10px;
+  --swiper-navigation-color: #DE187D;
+  --swiper-pagination-color: #DA291C;
+}

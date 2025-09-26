@@ -11,7 +11,7 @@ export default defineConfig({
 
   build: {
     assets: '_assets',
-    // assetsPrefix: 'https://www.claro.com.pe/assets/havas/prepago'
+    assetsPrefix: 'https://www.claro.com.pe/assets/havas/liga-1-max'
   },
 
   vite: {

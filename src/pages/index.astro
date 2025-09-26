@@ -1,12 +1,16 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import Button from "@UI/Button.astro"
+import PlanL1Max from "@components/PlanL1Max.astro"
+import Tabla from "@components/Tabla.astro"
+import Banner from "@components/Banner.astro"
+import Experiencia from "@components/Experiencia.astro"
+import Planes from "@components/Planes.astro"
 ---
 
 <Layout title='Prepago chévere'>
-	<div class="grid gap-2 container">
-		<Button as="a" href="https://www.claro.com.pe/personas/app/claro-musica/" classes="min-w-fit" >Saber más</Button>
-		<Button classes="min-w-fit cursor-pointer" type="submit" >Boton submit</Button>
-		<Button disabled classes="min-w-fit">Boton</Button>
-	</div>
+	<Banner />
+	<Experiencia/>
+	<Planes/>
+	<PlanL1Max />	
+	<Tabla/>
 </Layout>

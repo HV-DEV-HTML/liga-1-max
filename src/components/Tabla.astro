@@ -3469,4 +3469,21 @@
     btn__action.innerHTML = content__action.classList.contains('active') ? 'Ver menos' : 'Ver más'
   })
 
+  const getParameterUrl = (param) =>{
+    const url = new URL(window.location.href)
+    return url.searchParams.get(param)
+  }
+  if(getParameterUrl('tab')){
+    const tab = getParameterUrl('tab')
+    if (tab === 'tabla-posiciones') {
+      const targetEl = document.querySelector(".page1__content[data-tabs='deportes']")
+      console.log(targetEl)
+      const headerOffset = document.querySelector(".headerEv") ? (document.querySelector(".headerEv") as HTMLElement).offsetHeight : 0;
+      const yOffset = targetEl.getBoundingClientRect().top - headerOffset;
+      window.scrollTo({
+        top: yOffset,
+        behavior: 'smooth'
+      })
+    }
+  }
 </script>

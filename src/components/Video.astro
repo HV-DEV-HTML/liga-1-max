@@ -634,10 +634,8 @@ import Button from "@UI/Button.astro"
 
               setTimeout(() => {
                 const iframe = section.querySelector("iframe");
-
                 if (iframe) {
                   let src = iframe.getAttribute("src");
-
                   // Elimina parámetros existentes conflictivos
                   src = src
                     .replace(/(\?|&)autoplay=1/g, "")

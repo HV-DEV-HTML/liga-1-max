@@ -2,8 +2,8 @@
 import banner_mobile from "@/assets/banner_mobile.jpg";
 import banner_tablet from "@/assets/banner_tablet.webp";
 import banner_desktop from "@/assets/banner_desktop.webp";
-import logo_banner from "@/assets/logo_banner.webp";
-import Button from "@UI/Button.astro"
+import logo_banner from "@/assets/logo_bannerv2.webp";
+import Button from "@UI/Button.astro";
 ---
 
 <section class="p-0 md:pb-4 relative -mb-10 lg:-mb-30 xl:-mb-64">
@@ -17,10 +17,21 @@ import Button from "@UI/Button.astro"
     />
   </picture>
   <div class="absolute top-0 w-full h-full left-0 z-10">
-    <div class="container md:px-[20px] w-full flex flex-col gap-2 xl:gap-4 items-start relative top-full md:top-1/2 -translate-y-9/6 md:-translate-y-5/6">
-      <h1 class="font-amx-bold text-center md:text-left xl:text-center w-fit md:order-1 md:max-w-[400px] xl:max-w-[550px] text-balance leading-none h-fit text-2xl md:text-3xl lg:text-4xl text-white uppercase" data-aos="fade-up">L1Max: La emoción del futbol peruano en vivo</h1>
+    <div
+      class="container md:px-[20px] w-full flex flex-col gap-2 xl:gap-4 items-start relative top-full md:top-1/2 -translate-y-9/6 md:-translate-y-5/6"
+    >
+      <h1
+        class="font-amx-bold text-center md:text-left xl:text-center w-fit md:order-1 md:max-w-[400px] xl:max-w-[550px] text-balance leading-none h-fit text-2xl md:text-3xl lg:text-4xl text-white uppercase"
+        data-aos="fade-up"
+      >
+        L1MAX AHORA EN TU CASA Y EN TU CELU
+      </h1>
       <picture class="md:order-2">
-        <img src={logo_banner.src} class="w-full h-auto object-cover max-w-[500px] md:max-w-[340px] xl:max-w-[540px]" alt="Logo de L1Max">
+        <img
+          src={logo_banner.src}
+          class="w-full h-auto object-cover max-w-[500px] md:max-w-[340px] xl:max-w-[540px]"
+          alt="Logo de L1Max"
+        />
       </picture>
     </div>
   </div>

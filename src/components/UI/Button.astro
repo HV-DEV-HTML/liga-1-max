@@ -10,7 +10,7 @@ interface Props {
 
 // Obtener las props
 const {  as = 'button', href, type = 'button',  classes = '', arrow = false, ...props } = Astro.props as Props;
-const baseClasses = 'font-roboto appearance-none outline-none font-bold text-[13px] xl:text-base rounded-[26px] transition duration-300 flex items-center justify-center gap-1 leading-none w-fit disabled:bg-gray-300 disabled:cursor-not-allowed disabled:text-black';
+const baseClasses = 'text-base font-roboto appearance-none outline-none font-bold rounded-[26px] transition duration-300 flex items-center justify-center gap-1 leading-none w-fit disabled:bg-gray-300 disabled:cursor-not-allowed disabled:text-black cursor-pointer';
 const defaultClasses = classes.includes('bg') ? '' : 'bg-claro hover:bg-claro-dark text-white';
 const customPadding = classes.includes('py') || classes.includes('px') ? "" : "py-3 px-5";
 const allClasses = `${defaultClasses} ${customPadding} ${classes} ${baseClasses}`.trim();

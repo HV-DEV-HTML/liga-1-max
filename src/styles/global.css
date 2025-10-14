@@ -3,15 +3,6 @@
   font-family: "AMX Black";
   src: url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.woff2?") format("eot"), url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.woff2") format("woff2"), url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.woff") format("woff"), url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.woff2") format("truetype");
 }
-
-@font-face {
-  font-family: "FontAwesome";
-  src: url("https://netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?v=4.7.0");
-  src: url("https://netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("https://netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("https://netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("https://netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("https://netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
 @theme {
   --font-roboto: "Roboto", sans-serif; 
   --font-amx-bold: "AMX", sans-serif;
@@ -22,7 +13,7 @@
   --breakpoint-container-2xl: 1440px;
   --color-claro: #DA291C;
   --color-claro-dark: #9F1C12;
-  --animate-rotating: rotating 3s linear infinite;
+  --animate-fade-in: fade-in 0.3s ease-in-out forwards;
 }
 
 @utility container {
@@ -34,106 +25,38 @@
   }
 }
 
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 :root{
   --swiper-pagination-bullet-width: 10px;
   --swiper-pagination-bullet-height: 10px;
   --swiper-navigation-color: #DE187D;
   --swiper-pagination-color: #DA291C;
 }
-
-b{
-  font-weight: 700;
-}
-section.tutorialTabs .contentTutorial .part3 p a {
-  color: #0098A9;
-  text-decoration: underline;
-}
-.page1__content__views__view .portlet[data-newsletter] .just-validate-error-label{
-  display: none;
-}
-section.tutorialTabs .contentTutorial .part3 .informacion span b.sub {
-  color: #283342;
-  font-family: Roboto;
-  font-size: 20px;
-  font-style: italic;
-  font-weight: 400;
-  line-height: normal;
-}
-
-.c08BodySliderSld[idplan="316"] .cardiPlanV2 .cardiPlanPromo,
-.c08BodySliderSld[idplan="314"] .cardiPlanV2 .cardiPlanPromo,
-.c08BodySliderSld[idplan="317"] .cardiPlanV2 .cardiPlanPromo,
-.c08BodySliderSld[idplan="318"] .cardiPlanV2 .cardiPlanPromo,
-.c08BodySliderSld[idplan="319"] .cardiPlanV2 .cardiPlanPromo,
-.c08BodySliderSld[idplan="309"] .cardiPlanV2 .cardiPlanPromo,
-.c08BodySliderSld[idplan="310"] .cardiPlanV2 .cardiPlanPromo,
-.c08BodySliderSld[idplan="311"] .cardiPlanV2 .cardiPlanPromo,
-.c08BodySliderSld[idplan="312"] .cardiPlanV2 .cardiPlanPromo,
-.c08BodySliderSld[idplan="313"] .cardiPlanV2 .cardiPlanPromo {
-  background-color: #F5E8E8;
-}
-
-.c08BodySliderSld[idplan="316"] .cardiPlanV2.MEDcardiPlanV2::before,
-.c08BodySliderSld[idplan="314"] .cardiPlanV2.MEDcardiPlanV2::before,
-.c08BodySliderSld[idplan="317"] .cardiPlanV2.MEDcardiPlanV2::before,
-.c08BodySliderSld[idplan="318"] .cardiPlanV2.MEDcardiPlanV2::before,
-.c08BodySliderSld[idplan="319"] .cardiPlanV2.MEDcardiPlanV2::before,
-.c08BodySliderSld[idplan="309"] .cardiPlanV2.MEDcardiPlanV2::before,
-.c08BodySliderSld[idplan="310"] .cardiPlanV2.MEDcardiPlanV2::before,
-.c08BodySliderSld[idplan="311"] .cardiPlanV2.MEDcardiPlanV2::before,
-.c08BodySliderSld[idplan="312"] .cardiPlanV2.MEDcardiPlanV2::before,
-.c08BodySliderSld[idplan="313"] .cardiPlanV2.MEDcardiPlanV2::before {
-  content: '';
-  background-image: url("https://www.claro.com.pe/assets/havas/mundo-hogar/isotioil1maxv2.png");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  width: 239px;
-  height: 228px;
-  position: absolute;
-  z-index: 2;
-  top: 67px;
-  left: -26px;
-  opacity: 1;
-  mix-blend-mode: multiply;
-}
-section.c08.bgWhiteSpace{
-  background: white;
-  padding-top: 40px;
-  position: relative;
-}
-.c08 .c08BodySlider.slick-slider:before{
-  display: none !important;
-}
-.c08 .c08BodySlider.slick-slider:after{
-  display: none !important;
-}
-.btn_tooltip:hover  {
-  & .tooltip_content{
-    display: flex !important;
+.swiperPhones {
+  /* .swiper-slide {
+    width: auto !important;
+  } */
+  & .swiper-slide img{
+    transform: scale(0.85);
   }
-}
-.btn_tooltip  {
-  & .tooltip_content{
-    display: none;
+  & .swiper-slide.swiper-slide-active img{
+    transform: scale(1);
   }
-}
-
-@-webkit-keyframes rotating {
-  from {
-    -webkit-transform: rotate(0deg);
+  & .swiper-slide.swiper-slide-prev img{
+    transform: scale(0.85);
   }
-
-  to {
-    -webkit-transform: rotate(360deg);
+  & .swiper-slide.swiper-slide-next img{
+    transform: scale(0.85);
   }
-}
-
-@keyframes rotating {
-  from {
-    -webkit-transform: rotate(0deg);
+  & .swiper-pagination-bullets .swiper-pagination-bullet{
+    transition: all .3s ease-in-out;
+    &.swiper-pagination-bullet-active{
+      --swiper-pagination-bullet-width: 30px;
+      --swiper-pagination-bullet-height: 12px;
+      --swiper-pagination-bullet-border-radius: 20px;
+    }
   }
-
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
+} 

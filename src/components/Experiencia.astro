@@ -35,6 +35,7 @@
  -->
       </div>
     </div>
+    <!-- 
     <div class="flex flex-col md:grid md:grid-cols-2 gap-5 xl:gap-3">
       <div class="relative">
         <svg
@@ -210,5 +211,230 @@
         </div>
       </div>
     </div>
+     -->
+    <div class="contentTabs">
+      <div class="tab active" cat="SOY POSTPAGO">SOY POSTPAGO</div>
+      <div class="tab" cat="SOY HOGAR">SOY HOGAR</div>
+    </div>
+    <div class="contentInfoTabs">
+      <div class="content active" cat="SOY POSTPAGO">
+        <div class="font-amx-regular">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="12"
+            viewBox="0 0 16 12"
+            fill="none"
+          >
+            <path
+              d="M1.5 7L5 10.5L14.5 1"
+              stroke="#20B038"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>Míralo desde tu dispositivo móvil.
+        </div>
+        <div class="font-amx-regular">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="12"
+            viewBox="0 0 16 12"
+            fill="none"
+          >
+            <path
+              d="M1.5 7L5 10.5L14.5 1"
+              stroke="#20B038"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg> Disfrútalo sin costo adicional si tu plan postpago Max lo incluye.
+        </div>
+      </div>
+      <div class="content" cat="SOY HOGAR">
+        <div class="font-amx-regular">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="12"
+            viewBox="0 0 16 12"
+            fill="none"
+          >
+            <path
+              d="M1.5 7L5 10.5L14.5 1"
+              stroke="#20B038"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg> Míralo desde tu cel, tablet o compu.
+        </div>
+        <div class="font-amx-regular">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="12"
+            viewBox="0 0 16 12"
+            fill="none"
+          >
+            <path
+              d="M1.5 7L5 10.5L14.5 1"
+              stroke="#20B038"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg> Disfrútalo hasta en 2 dispositivos en simultáneo.
+        </div>
+        <div class="font-amx-regular">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="12"
+            viewBox="0 0 16 12"
+            fill="none"
+          >
+            <path
+              d="M1.5 7L5 10.5L14.5 1"
+              stroke="#20B038"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg> Disfrútalo sin costo adicional si tu plan hogar lo incluye.
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
+<style>
+  .contentTabs {
+    max-width: 435px;
+    width: 100%;
+    display: flex;
+    background-color: #fff;
+    border-radius: 28.5px;
+    margin: 0 auto;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+  }
+  .contentTabs .tab {
+    width: 50%;
+    color: #da291c;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 28.5px;
+    padding: 11px 0;
+    cursor: pointer;
+  }
+  .contentTabs .tab.active {
+    color: #fff;
+    background-color: #da291c;
+  }
+  .contentInfoTabs {
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 0 4px 0 rgba(164, 164, 164, 0.25);
+    padding: 24px 26px;
+    width: fit-content;
+    margin: 0 auto;
+  }
+  .contentInfoTabs .content {
+    display: none;
+  }
+  .contentInfoTabs .content.active {
+    display: flex;
+    gap: 50px;
+    /*display: grid;
+    grid-template-columns: repeat(2, 1fr);*/
+  }
+  .contentInfoTabs .content div {
+    display: flex;
+    gap: 20px;
+    color: #000;
+    font-family: AMX;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    width: 250px;
+  }
+  .contentInfoTabs .content div svg {
+    flex-shrink: 0;
+  }
+  @media (max-width: 1023px) {
+    .contentTabs {
+      margin-top: 10px;
+    }
+    .contentInfoTabs {
+      max-width: 630px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .contentInfoTabs .content.active {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .contentInfoTabs .content div {
+      width: 100%;
+    }
+  }
+  /*section.c08 {
+    display: none;
+  }*/
+  section.c08.pB30 {
+    display: block;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll(".contentTabs .tab");
+    const contents = document.querySelectorAll(".contentInfoTabs .content");
+
+    // Función para actualizar la visibilidad de los sections según el tab activo
+    const actualizarSections = (cat) => {
+      // Esperar un poco para asegurarnos de que los sections existan en el DOM
+      setTimeout(() => {
+        const sectionPB30 = document.querySelector("section.c08.pB30");
+        const sectionPT30 = document.querySelector("section.c08.pT30");
+        const allSections = document.querySelectorAll("section.c08");
+
+        // Si el tab activo es SOY POSTPAGO
+        if (cat === "SOY POSTPAGO") {
+          allSections.forEach((sec) => (sec.style.display = "none"));
+          if (sectionPB30) sectionPB30.style.display = "block";
+        }
+
+        // Si el tab activo es SOY HOGAR
+        if (cat === "SOY HOGAR") {
+          allSections.forEach((sec) => (sec.style.display = "none"));
+          if (sectionPT30) sectionPT30.style.display = "block";
+        }
+      }, 300); // Espera 300ms (ajústalo si se cargan más tarde)
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const cat = tab.getAttribute("cat");
+
+        // Cambiar clases en tabs
+        tabs.forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        // Cambiar clases en contenidos
+        contents.forEach((content) => content.classList.remove("active"));
+        const matchingContent = document.querySelector(
+          `.contentInfoTabs .content[cat="${cat}"]`
+        );
+        if (matchingContent) matchingContent.classList.add("active");
+
+        // Actualizar visibilidad de sections
+        actualizarSections(cat);
+      });
+    });
+
+    // Ejecutar una vez al inicio para reflejar el tab activo por defecto
+    const activeTab = document.querySelector(".contentTabs .tab.active");
+    if (activeTab) actualizarSections(activeTab.getAttribute("cat"));
+  });
+</script>

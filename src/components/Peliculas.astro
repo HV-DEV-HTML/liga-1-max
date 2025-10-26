@@ -1,0 +1,311 @@
+---
+
+---
+
+<div class="portlet" data-movies="data-movies">
+  <div class="portlet__align">
+    <div class="portlet__header">
+      <h2 class="font-amx-bold font-bold text-center text-2xl md:text-3xl">Películas y series de Claro video</h2>
+    </div>
+    <div class="portlet__movies">
+      <div class="slider" id="slidermovies2">
+        <a href="https://www.clarovideo.com/peru/vcard/homeuser/Sonic-3-La-Pelicula/1322186" target="_blank" title="" class="slider__item">
+          <img class="slider__item__picture" src="https://www.claro.com.pe/assets/havas/claro-video/assets/claro_video_01.webp" alt="Movie | Claro Peru" loading="lazy" width="auto" height="auto" />
+        </a>
+        <a href="https://www.clarovideo.com/peru/vcard/homeuser/Bailarina/1329673" target="_blank" title=""
+          class="slider__item">
+          <img class="slider__item__picture" src="https://www.claro.com.pe/assets/havas/claro-video/assets/claro_video_02.webp" alt="Movie | Claro Peru" loading="lazy" width="auto" height="auto" />
+        </a>
+        <a href="https://www.clarovideo.com/peru/vcard/home/la-ciudad-perdida/1334181" target="_blank" title="" class="slider__item">
+          <img class="slider__item__picture" src="https://www.claro.com.pe/assets/havas/claro-video/assets/claro_video_03.webp" alt="Movie | Claro Peru" loading="lazy" width="auto" height="auto" />
+        </a>
+        <a href="https://www.clarovideo.com/peru/vcard/homeuser/Una-pelicula-de-Minecraft/1329509" target="_blank" title="" class="slider__item">
+          <img class="slider__item__picture" src="https://www.claro.com.pe/assets/havas/claro-video/assets/claro_video_04.webp" alt="Movie | Claro Peru" loading="lazy" width="auto" height="auto" />
+        </a>          
+      </div>
+      <p class="pagingInfo2">1/4</p>
+    </div>
+  </div>
+</div>
+
+<style is:inline>
+  .portlet[data-movies] .portlet__align {
+    max-width: 1252px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px 0 50px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .portlet[data-movies] .portlet__align {
+      max-width: 900px;
+      width: 90%;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .portlet[data-movies] .portlet__align {
+      width: 100%;
+      padding-left: 5%;
+    }
+  }
+
+  .portlet[data-movies] .portlet__header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .portlet[data-movies] .portlet__movies {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .portlet[data-movies] .portlet__movies {
+      padding-bottom: 10px;
+    }
+  }
+
+  .portlet[data-movies] .portlet__movies .pagingInfo2 {
+    display: none;
+    text-align: center;
+    color: #000;
+    padding-top: 20px;
+    font: normal 700 16px "Roboto";
+    line-height: normal;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .portlet[data-movies] .portlet__movies .pagingInfo2 {
+      display: block;
+    }
+  }
+
+  .portlet[data-movies] .portlet__movies .slider {
+    width: 100%;
+    height: inherit;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .portlet[data-movies] .portlet__movies .slider .slick-list {
+    width: 100%;
+    height: 100%;
+  }
+
+  .portlet[data-movies] .portlet__movies .slider .slick-track {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    height: 100%;
+    width: 100%;
+    padding: 0px 0px;
+  }
+
+  .portlet[data-movies] .portlet__movies .slider .slick-prev {
+    position: absolute;
+    display: block;
+    width: 34px;
+    height: 34px;
+    background-color: #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    line-height: 0px;
+    font-size: 0px;
+    cursor: pointer;
+    background: transparent;
+    color: transparent;
+    top: auto;
+    bottom: -63px;
+    left: 37vw;
+    padding: 0;
+    border: none;
+    outline: none;
+    z-index: 1;
+    margin-top: -10px;
+  }
+
+  @media screen and (max-width: 640px) {
+    .portlet[data-movies] .portlet__movies .slider .slick-prev {
+      left: 32vw;
+    }
+  }
+
+  .portlet[data-movies] .portlet__movies .slider .slick-prev:before {
+    content: "";
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    background: url("https://static.claro.com.pe/landings/havas/2023/partidos/v3/assets/arrow-right-circle.svg") no-repeat left top;
+    background-color: #fff;
+    height: inherit;
+    width: inherit;
+    display: block;
+  }
+
+  .portlet[data-movies] .portlet__movies .slider .slick-disabled {
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+  }
+
+  .portlet[data-movies] .portlet__movies .slider .slick-next {
+    position: absolute;
+    display: block;
+    width: 34px;
+    height: 34px;
+    background-color: #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    line-height: 0px;
+    font-size: 0px;
+    cursor: pointer;
+    background: transparent;
+    color: transparent;
+    top: auto;
+    bottom: -63px;
+    right: 37vw;
+    padding: 0;
+    border: none;
+    outline: none;
+    z-index: 1;
+  }
+
+  @media screen and (max-width: 640px) {
+    .portlet[data-movies] .portlet__movies .slider .slick-next {
+      right: 32vw;
+    }
+  }
+
+  .portlet[data-movies] .portlet__movies .slider .slick-next:before {
+    content: "";
+    background: url("https://static.claro.com.pe/landings/havas/2023/partidos/v3/assets/arrow-right-circle.svg") no-repeat left top;
+    background-color: #fff;
+    border-radius: 50%;
+    height: inherit;
+    width: inherit;
+    display: block;
+  }
+
+  .portlet[data-movies] .portlet__movies .slider .slick-slide {
+    width: 298px;
+    height: 460px;
+    margin: 0 10px;
+    overflow: hidden;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .portlet[data-movies] .portlet__movies .slider .slick-slide {
+      width: 340px;
+      height: 528px;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .portlet[data-movies] .portlet__movies .slider .slick-slide {
+      width: 242px;
+      height: 378px;
+    }
+  }
+
+  .portlet[data-movies] .portlet__movies .slider__item {
+    width: 298px;
+    height: 460px;
+    border-radius: 24px;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .portlet[data-movies] .portlet__movies .slider__item {
+      width: 340px;
+      height: 528px;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .portlet[data-movies] .portlet__movies .slider__item {
+      width: 242px;
+      height: 378px;
+    }
+  }
+
+  .portlet[data-movies] .portlet__movies .slider__item img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: top center;
+    object-position: top center;
+    transition: transform 0.5s, -webkit-transform 0.5s;
+  }
+
+  .portlet[data-movies] .portlet__movies .slider__item img:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+</style>
+
+<script is:inline>
+  $(document).ready(function () {
+    $('#slidermovies2').not('.slick-initialized').slick({
+      dots: false,
+      arrows: false,
+      infinite: false,
+      variableWidth: true,
+      speed: 300,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 1025,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            arrows: true,
+          }
+        },
+        {
+          breakpoint: 769,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            arrows: true,
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: true,
+          }
+        }
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
+      ]
+    });
+
+    var $status = $('.pagingInfo2');
+    var $slickElement = $('#slidermovies2');
+
+    $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+      //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+      var i = (currentSlide ? currentSlide : 0) + 1;
+      //- if(window.innerWidth <= 768px) {
+      //-   return $status.text(i + '/' + '2');
+      //- }
+      $status.text(i + '/' + slick.slideCount);
+    });
+  })
+</script>

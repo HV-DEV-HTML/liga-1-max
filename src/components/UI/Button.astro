@@ -1,0 +1,36 @@
+---
+interface Props {
+  icon?: string; // Icono opcional
+  as?: 'button' | 'a'; // Determina si se renderiza como <button> o <a>
+  href?: string; // Propiedad para el enlace (solo relevante si as === 'a')
+  type?: 'button' | 'submit' | 'reset';
+  classes?: string;
+  arrow?: boolean;
+}
+
+// Obtener las props
+const {  as = 'button', href, type = 'button',  classes = '', arrow = false, ...props } = Astro.props as Props;
+const baseClasses = 'font-roboto appearance-none outline-none font-bold text-[13px] xl:text-base rounded-[26px] transition duration-300 flex items-center justify-center gap-1 leading-none w-fit disabled:bg-gray-300 disabled:cursor-not-allowed disabled:text-black';
+const defaultClasses = classes.includes('bg') ? '' : 'bg-claro hover:bg-claro-dark text-white';
+const customPadding = classes.includes('py') || classes.includes('px') ? "" : "py-3 px-5";
+const allClasses = `${defaultClasses} ${customPadding} ${classes} ${baseClasses}`.trim();
+---
+{as === 'a' ? (
+  <a
+    href={href ?? '#'}
+    class={allClasses}
+    {...props}
+  >    <span>
+      <slot />
+    </span>
+  </a>
+) : (
+  <button
+    type={type}
+    class={allClasses}
+    {...props}
+  >    <span>
+      <slot />
+    </span>
+  </button>
+)}

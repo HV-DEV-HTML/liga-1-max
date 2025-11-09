@@ -12,8 +12,8 @@
   />
   <div id="tutorial"></div>
   <div class="container">
-    <h2 class="font-amx-bold font-bold text-center text-2xl md:text-3xl">
-      ¿Cómo activar <span class="text-claro">L1MAX</span>?
+    <h2 id="title_tutorial_slider" class="font-amx-bold font-bold text-center text-2xl md:text-3xl">
+      Sigue los pasos para activar <span class="text-claro">L1MAX Móvil</span>
     </h2>
     <div class="tabs principal hidden">
       <div class="tab active" data-tab="L1MAX MOVIL">SOY POSTPAGO</div>
@@ -77,10 +77,7 @@
     </div>
     <div class="selectTabs" data-tab="L1 MAX">
       <select name="" id="">
-        <option value="tutorialCambioContrasena"
-          >Con cuenta de Claro Video</option
-        >
-        <!-- <option value="tutorialContrasenaTemporal">Ingreso con contraseña temporal y cambio de contraseña posterior -->
+        <option value="tutorialDedeWebConPago">Con cuenta de Claro Video</option>
       </select>
       <img
       class="icon"
@@ -90,7 +87,7 @@
     </div>
   </div>
   <div class="contentTutorial" data-tab="L1MAX MOVIL">
-    <div class="titleSUB">
+    <!-- <div class="titleSUB">
       <h3>¿Cómo activar L1MAX MÓVIL?</h3>
       <div class="part subTabs">
         <div class="tab active" data-lista="tutorialDedeAppAndroid">
@@ -100,7 +97,7 @@
           Con cuenta de Claro Video
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="part part2">
       <img
         src="https://www.claro.com.pe/assets/havas/claro-video/assets/activacion_app_android.png"
@@ -146,19 +143,17 @@
         </div>
       </div>
     </div>
+    <p class="legalText">Luego de activar el beneficio, descarga la app de Claro video y disfruta los partidos desde tu celu.</p>
   </div>
   <div class="contentTutorial" data-tab="L1 MAX">
-    <div class="titleSUB">
+    <!-- <div class="titleSUB">
       <h3>¿Cómo activar L1MAX?</h3>
       <div class="part subTabs">
         <div class="tab active" data-lista="tutorialCambioContrasena">
           Con cuenta de Claro Video
         </div>
-        <!-- <div class="data-tab" data-lista="tutorialContrasenaTemporal">
-            Ingreso con contraseña temporal y cambio de contraseña posterior
-          </div> -->
       </div>
-    </div>
+    </div> -->
     <div class="part part2">
       <img
         src="https://www.claro.com.pe/assets/havas/claro-video/assets/activacion_app_android.png"
@@ -619,15 +614,26 @@
   section.tutorialTabs .contentTutorial {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 1fr 30px 1fr 30px 1fr;
     grid-template-columns: repeat(3, 1fr);
-    -webkit-column-gap: 30px;
-    -moz-column-gap: 30px;
     column-gap: 30px;
     margin: 0 auto;
     margin-top: 40px;
-    max-width: 1100px;
+    max-width: 800px;
     display: none;
+    & .legalText {
+      font-size: 16px;
+      width: 100%;
+      grid-column: 1 / -1;
+      text-align: center;
+      font-family: 'Roboto';
+      font-weight: 400;
+      padding-top: 18px;
+    }
+  }
+  @media (min-width: 768px) {
+    section.tutorialTabs .contentTutorial > *:first-child {
+      grid-column-start: 2;
+    }
   }
 
   section.tutorialTabs .contentTutorial.active {
@@ -882,7 +888,7 @@
     }
 
     section.tutorialTabs .selectTabs.active {
-      display: block;
+      display: none;
       margin-top: 25px;
 
       position: relative;
@@ -1125,66 +1131,58 @@
         title:
           'Paso 1 - Ingresa a <a href="https://www.clarovideo.com" title="" target="_blank">www.clarovideo.com</a> y regístrate con tu correo',
         image:
-          "https://www.claro.com.pe/assets/havas/claro-video/assets/activacion_app_android.png",
+          "https://www.claro.com.pe/assets/havas/claro-video/assets/liga1max/postpago/slider01.png?v=3",
         parrafo:
           "<b>Nota:</b> Si ya tienes una cuenta de Claro video, usa otro correo.",
       },
       2: {
-        title: "Paso 2 - Haz clic en el banner azul de la parte superior",
-        image:
-          "https://www.claro.com.pe/assets/havas/claro-video/assets/activacion_app_android_2v3.png",
+        title: "Paso 2 - Ingresa un correo electrónico",
+        image: "https://www.claro.com.pe/assets/havas/claro-video/assets/liga1max/postpago/slider02.png?v=3",
+        parrafo: `*Si te aparece un mensaje indicando que tu correo ya está vinculado a nuestra base de datos, <strong>llama al 123</strong> para ayudarte.`,
       },
       3: {
-        title: "Paso 3 - En la opción L1MAX Móvil, selecciona “Suscríbete”",
-        image:
-          "https://www.claro.com.pe/assets/havas/claro-video/assets/activacion_app_android_3v2.png",
-        parrafo: "<b class='sub'>¡No te preocupes, no te cobraremos!<b>",
+        title: `Paso 3 - Haz clic en el banner de L1MAX Móvil y suscríbete ¡Tranqui no te cobraremos!`,
+        image: "https://www.claro.com.pe/assets/havas/claro-video/assets/liga1max/postpago/slider03.gif?v=3",
       },
       4: {
-        title:
-          "Paso 4 - En medio de pago, elige “Línea móvil Claro” e ingresa tu nuevo número de celular Claro",
-        image:
-          "https://www.claro.com.pe/assets/havas/claro-video/assets/activacion_app_android_4v2.png",
+        title: `Paso 4 - En agregar medio de pago, elige “Línea móvil Claro” e ingresa tu número`,
+        image: "https://www.claro.com.pe/assets/havas/claro-video/assets/liga1max/postpago/slider04.gif?v=3",
       },
       5: {
-        title:
-          "Paso 5 - Ingresa el código de validación, haz clic en “Contratar” ¡y listo!",
-        image:
-          "https://www.claro.com.pe/assets/havas/claro-video/assets/activacion_app_android_5v2.png",
-        parrafo:
-          "<b>Nota:</b> Descarga el app Claro video en tu celu para empezar a disfrutar.",
+        title: `Paso 5 - Ingresa tu código de validación, haz clic en “Contratar”`,
+        image: "https://www.claro.com.pe/assets/havas/claro-video/assets/liga1max/postpago/slider05.gif?v=3",
       },
     },
     tutorialDedeWebConPago: {
       1: {
         title:
-          'Paso 1 - Ingresa a <a href="https://www.clarovideo.com" title="" target="_blank">www.clarovideo.com</a> e inicia sesión con tu correo registrado',
+          'Paso 1 - Llama al 080000123, ingresa tu DNI o RUC y marca la opción 2',
         image:
           "https://www.claro.com.pe/assets/havas/claro-video/assets/activacion_web_pago.png",
       },
       2: {
-        title: "Paso 2 - Haz clic en las tres barritas",
+        title: "Paso 2 - Luego, descarga el app Claro video e inicia sesión con tu nuevo correo",
         image:
           "https://www.claro.com.pe/assets/havas/claro-video/assets/activacion_web_pago_2v3.png",
       },
       3: {
-        title: "Paso 3 - Ingresa a “TV en Vivo” y luego a “Fútbol Peruano”",
+        title: `Paso 3 - Haz clic en “¿Olvidaste tu contraseña?”`,
         image:
           "https://www.claro.com.pe/assets/havas/claro-video/assets/activacion_web_pago_3v2.png",
       },
       4: {
-        title: "Paso 4 - Selecciona “L1MAXMOVIL” y haz clic en “Suscríbete”",
+        title: `Paso 4 - En el correo que te enviaremos, haz clic en “Iniciar sesión”`,
         image:
           "https://www.claro.com.pe/assets/havas/claro-video/assets/activacion_web_pago_4v2.png",
         parrafo: "<b class='sub'>¡No te preocupes, no te cobraremos!<b>",
       },
       5: {
-        title:
-          "Paso 5 - Ingresa el código de validación, haz clic en “Contratar” ¡y listo!",
-        image:
-          "https://www.claro.com.pe/assets/havas/claro-video/assets/activacion_web_pago_5v2.png",
-        parrafo:
-          "<b>Nota:</b> Descarga el app Claro video en tu celu para empezar a disfrutar.",
+        title: `Paso 5 - Ingresa al perfil de Administrador y crea tu nueva contraseña ¡Listo!`,
+        image: "https://www.claro.com.pe/assets/havas/claro-video/assets/activacion_web_pago_5v2.png",
+      },
+      6: {
+        title: `Paso 6 - Ve a “inicio” y haz clic en el banner de “L1MAX” para disfrutar tus partidos`,
+        image: "https://www.claro.com.pe/assets/havas/claro-video/assets/activacion_web_pago_5v2.png",
       },
     },
     tutorialCambioContrasena: {
@@ -1302,9 +1300,7 @@
   function inicializarTutorial(contenedor) {
     const tabs = contenedor.querySelectorAll(".subTabs .tab");
     const tabValue = contenedor.getAttribute("data-tab");
-    const select = document.querySelector(
-      `.selectTabs[data-tab="${tabValue}"] select`
-    ); // su selectTabs correspondiente
+    const select = document.querySelector(`.selectTabs[data-tab="${tabValue}"] select`); // su selectTabs correspondiente
     const imgElement = contenedor.querySelector(".part2 img");
     const titleElement = contenedor.querySelector(".part3 .content p");
     const prevBtn = contenedor.querySelector(".flechas .prev");
@@ -1447,8 +1443,14 @@
   * ======================== */
   document.addEventListener('cambiarTutorialL1Max', ((event: CustomEvent) => {
     const tipoTab = event.detail.tipo;
+    const titleSlider = document.getElementById('title_tutorial_slider');
     console.log('🎯 Cambiando tutorial a:', tipoTab);
-    
+    if (tipoTab === 'L1 MAX') {
+      titleSlider.innerHTML = 'Sigue los pasos para activar <span class="text-claro">L1MAX</span>';
+    }
+    if (tipoTab === 'L1MAX MOVIL') {
+      titleSlider.innerHTML = 'Sigue los pasos para activar <span class="text-claro">L1MAX Móvil</span>';
+    }
     // Activar las secciones correspondientes
     activarSecciones(tipoTab);
 

@@ -1,32 +1,87 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import PlanL1Max from "@components/PlanL1Max.astro"
-import Tabla from "@components/Tabla.astro"
-import Banner from "@components/Banner.astro"
-import Experiencia from "@components/Experiencia.astro"
-import Planes from "@components/Planes.astro"
-import BannerSec from '@/components/Banner_sec.astro';
-import Video from '@/components/Video.astro';
-import Peliculas from '@/components/Peliculas.astro';
-import Cards from '@/components/Cards.astro';
-import Reconocimientos from '@/components/Reconocimientos.astro';
-import Newsletter from '@/components/Newsletter.astro';
-import trama_r from '@/assets/trama_r.png';
-import trama_l from '@/assets/trama_l.png';
+import Layout from "@layouts/Layout.astro";
+import PlanL1Max from "@components/PlanL1Max.astro";
+import Tabla from "@components/Tabla.astro";
+import Banner from "@components/Banner.astro";
+import Experiencia from "@components/Experiencia.astro";
+import Planes from "@components/Planes.astro";
+import BannerSec from "@/components/Banner_sec.astro";
+import Video from "@/components/Video.astro";
+import Peliculas from "@/components/Peliculas.astro";
+import Cards from "@/components/Cards.astro";
+import Reconocimientos from "@/components/Reconocimientos.astro";
+import Newsletter from "@/components/Newsletter.astro";
+import trama_r from "@/assets/trama_r.png";
+import trama_l from "@/assets/trama_l.png";
 ---
 
-<Layout title='Prepago chévere'>
-	<img class="absolute top-[155%] right-0" src={trama_r.src} alt="trama" />
-	<img class="absolute top-[140%] left-0" src={trama_l.src} alt="trama" />
-	<Banner />
-	<Experiencia/>
-	<Planes/>
-	<PlanL1Max />	
-	<Tabla/>
-	<BannerSec />
-	<Reconocimientos />
-	<Video />
-	<Newsletter />
-	<Cards />
-	<Peliculas />
+<Layout title="Prepago chévere">
+  <style is:global>
+    #cPal {
+      overflow-x: hidden !important;
+    }
+    .ocultarPlanes {
+      height: 0;
+      overflow: hidden;
+      padding: 0 !important;
+      margin: 0;
+      pointer-events: none;
+      opacity: 0;
+    }
+    @media (max-width: 500px) {
+      section.c08 {
+        padding-top: 10px !important;
+      }
+    }
+
+    .cardiPlanV2 {
+      position: relative;
+    }
+
+    .c08BodySliderSld[idplan="320"] .cardiPlanV2.MEDcardiPlanV2:before,
+    .c08BodySliderSld[idplan="304"] .cardiPlanV2.MEDcardiPlanV2:before,
+    .c08BodySliderSld[idplan="68"] .cardiPlanV2.MEDcardiPlanV2:before,
+    .c08BodySliderSld[idplan="74"] .cardiPlanV2.MEDcardiPlanV2:before,
+    .c08BodySliderSld[idplan="76"] .cardiPlanV2.MEDcardiPlanV2:before,
+    .c08BodySliderSld[idplan="77"] .cardiPlanV2.MEDcardiPlanV2:before,
+    .c08BodySliderSld[idplan="78"] .cardiPlanV2.MEDcardiPlanV2:before,
+    .c08BodySliderSld[idplan="80"] .cardiPlanV2.MEDcardiPlanV2:before,
+    .c08BodySliderSld[idplan="81"] .cardiPlanV2.MEDcardiPlanV2:before {
+      content: "";
+      z-index: 2;
+      opacity: 1;
+      mix-blend-mode: multiply;
+      background-image: url(https://www.claro.com.pe/assets/havas/mundo-hogar/isotioil1maxv2.png);
+      background-repeat: no-repeat;
+      background-size: 100%;
+      width: 239px;
+      height: 228px;
+      position: absolute;
+      top: 67px;
+      left: -26px;
+    }
+
+    @media (min-width: 760px) {
+      section.c08.pB30 #tab-1 .slick-track {
+        width: 100% !important;
+        display: flex;
+        justify-content: center;
+        transform: none !important;
+      }
+    }
+  </style>
+
+  <img class="absolute top-[155%] right-0" src={trama_r.src} alt="trama" />
+  <img class="absolute top-[140%] left-0" src={trama_l.src} alt="trama" />
+  <Banner />
+  <Experiencia />
+  <Planes />
+  <PlanL1Max />
+  <Tabla />
+  <BannerSec />
+  <Reconocimientos />
+  <Video />
+  <Newsletter />
+  <Cards />
+  <Peliculas />
 </Layout>

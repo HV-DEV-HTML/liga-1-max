@@ -9,9 +9,8 @@
         Descubre la experiencia con <span class="text-claro">L1MAX</span>
       </h2>
       <div class="text-center font-amx-regular text-base lg:text-lg">
-        Liga 1 Te Apuesto y Brasileirão y más. Los partidos de Club
-        Universitario de Deportes y Sport Boys solo están disponibles cuando
-        juegan fuera de casa.
+        Todos los equipos, todos los partidos, todo el futbol peruano en Claro
+        por L1 MAX.
         <!-- 
         Con <strong class="font-amx-bold">L1Max</strong> sigues la emoción de la <strong class="font-amx-bold">Liga 1 Perú y Brazilera</strong>
         <div class="inline-flex items-center gap-2 mx-1 relative w-fit cursor-pointer btn_tooltip">
@@ -395,24 +394,24 @@
           const e = document.querySelector("section.c08.pB30"),
             o = document.querySelector("section.c08.pT30"),
             a = document.querySelectorAll("section.c08");
-          t === "SOY POSTPAGO" &&
+          (t === "SOY POSTPAGO" &&
             (a.forEach((c) => c.classList.add("ocultarPlanes")),
             e && e.classList.remove("ocultarPlanes")),
             t === "SOY HOGAR" &&
               (a.forEach((c) => c.classList.add("ocultarPlanes")),
-              o && o.classList.remove("ocultarPlanes"));
+              o && o.classList.remove("ocultarPlanes")));
         }, 300);
       };
     s.forEach((t) => {
       t.addEventListener("click", () => {
         const e = t.getAttribute("cat");
-        s.forEach((c) => c.classList.remove("active")),
+        (s.forEach((c) => c.classList.remove("active")),
           t.classList.add("active"),
-          l.forEach((c) => c.classList.remove("active"));
+          l.forEach((c) => c.classList.remove("active")));
         const o = document.querySelector(
-          `.contentInfoTabs .content[cat="${e}"]`
+          `.contentInfoTabs .content[cat="${e}"]`,
         );
-        o && o.classList.add("active"), i(e);
+        (o && o.classList.add("active"), i(e));
         const a = new CustomEvent("cambiarTutorialL1Max", {
           detail: {
             tipo: e === "SOY POSTPAGO" ? "L1MAX MOVIL" : "L1 MAX",

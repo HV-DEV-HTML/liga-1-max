@@ -1,7 +1,7 @@
 ---
-import banner_mobile from "@/assets/banner_mobile.jpg";
-import banner_tablet from "@/assets/banner_tablet.webp";
-import banner_desktop from "@/assets/banner_desktop.webp";
+import banner_mobile from "@/assets/banner_mobilev6.webp";
+import banner_tablet from "@/assets/banner_tabletv2.webp";
+import banner_desktop from "@/assets/banner_desktopv2.webp";
 import logo_banner from "@/assets/logo_bannerv2.webp";
 import Button from "@UI/Button.astro";
 ---
@@ -16,7 +16,7 @@ import Button from "@UI/Button.astro";
       alt="LIGA 1 TE APUESTO"
     />
   </picture>
-  <div class="absolute top-0 w-full h-full left-0 z-10">
+  <div class="absolute top-0 w-full h-full left-0 z-10 bannerMobie">
     <div
       class="container md:px-[20px] w-full flex flex-col gap-2 xl:gap-4 items-start relative top-full md:top-1/2 -translate-y-9/6 md:-translate-y-5/6"
     >
@@ -36,3 +36,10 @@ import Button from "@UI/Button.astro";
     </div>
   </div>
 </section>
+<style>
+  @media (max-width: 500px) {
+    .bannerMobie {
+      margin-top: 44px !important;
+    }
+  }
+</style>

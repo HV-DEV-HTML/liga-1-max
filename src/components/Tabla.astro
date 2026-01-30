@@ -43,6 +43,7 @@
                           </ul>
                         </div>
                         <div class="table__content">
+                          <!-- 
                           <div class="table__item">
                             <ul>
                               <li>
@@ -262,7 +263,7 @@
                               <li>-18</li>
                               <li><strong>11</strong></li>
                             </ul>
-                          </div>
+                          </div> -->
                         </div>
                       </div>
                     </div>
@@ -3489,7 +3490,7 @@
       .portlet__main__table__content
       .table__content {
       height: 990px;
-      height: auto;
+      height: auto !important;
       overflow: hidden;
       transition: height 1s;
       padding-bottom: 15px;
@@ -5140,21 +5141,21 @@
   </style>
 
   <script>
-    const BASE_URL = "https://api-football-v1.p.rapidapi.com/v3";
-    const API_KEY = "455d68b50dmsh0af0a6836873b4bp178cc7jsn0bb76fff3151";
+    const BASE_URL = "https://v3.football.api-sports.io";
+    const API_KEY = "b5ddc818edf791ce0407bc23f857967a";
 
     const getDataTable = async () => {
       const response = await fetch(
-        `${BASE_URL}/standings/?league=281&season=2025`,
+        `${BASE_URL}/standings/?league=281&season=2026`,
         {
           headers: {
             "X-RapidAPI-Key": API_KEY,
           },
-        }
+        },
       );
       const data = await response.json();
-      console.log(data.response[0].league.standings[1]);
-      return data.response[0].league.standings[1];
+      console.log(data.response[0].league.standings[0]);
+      return data.response[0].league.standings[0];
     };
 
     const pad = (num) => num.toString().padStart(2, "0"); // ejemplo de pad
@@ -5209,7 +5210,7 @@
 
     const btn__action = document.querySelector(".btn__more[data-btnaction]");
     const content__action = document.querySelector(
-      ".portlet__main__table .table__content"
+      ".portlet__main__table .table__content",
     );
 
     btn__action.addEventListener("click", () => {
@@ -5227,7 +5228,7 @@
       const tab = getParameterUrl("tab");
       if (tab === "tabla-posiciones") {
         const targetEl = document.querySelector(
-          ".page1__content[data-tabs='deportes']"
+          ".page1__content[data-tabs='deportes']",
         );
         console.log(targetEl);
         const headerOffset = document.querySelector(".headerEv")

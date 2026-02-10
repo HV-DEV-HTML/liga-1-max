@@ -434,5 +434,42 @@
         document.dispatchEvent(e);
       }, 500);
     }
+
+
+const query = window.location.search.replace("?", "").replace(/\/$/, "").toLowerCase();
+
+      const secTabs = document.querySelector(".secTabs");
+      if (!secTabs) return;
+
+      const scrollToTabs = () => {
+        const y =
+          secTabs.getBoundingClientRect().top +
+          window.pageYOffset -
+          100;
+
+        window.scrollTo({
+          top: y,
+          behavior: "smooth"
+        });
+      };
+
+      const clickTab = (selector) => {
+        const tab = document.querySelector(selector);
+        if (tab) tab.click();
+      };
+
+      if (query === "=movil") {
+        scrollToTabs();
+        setTimeout(() => {
+          clickTab('.tab[cat="SOY POSTPAGO"]');
+        }, 500);
+      }
+
+      if (query === "=hogar") {
+        scrollToTabs();
+        setTimeout(() => {
+          clickTab('.tab[cat="SOY HOGAR"]');
+        }, 500);
+      }
   });
 </script>

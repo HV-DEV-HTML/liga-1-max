@@ -2,11 +2,11 @@
 import banner_mobile from "@/assets/banner_mobilev6.webp";
 import banner_tablet from "@/assets/banner_tabletv2.webp";
 import banner_desktop from "@/assets/banner_desktopv2.webp";
-import logo_banner from "@/assets/logo_bannerv2.webp";
+import logo_banner2 from "@/assets/logo_bannerv4.webp";
 import Button from "@UI/Button.astro";
 ---
 
-<section class="p-0 md:pb-4 relative -mb-10 lg:-mb-30 xl:-mb-64">
+<section class="p-0 md:pb-4 relative -mb-10 lg:-mb-30 xl:-mb-64 seccionbanner">
   <picture class="flex w-full h-auto relative">
     <source media="(min-width: 1200px)" srcset={banner_desktop.src} />
     <source media="(min-width: 768px)" srcset={banner_tablet.src} />
@@ -21,15 +21,16 @@ import Button from "@UI/Button.astro";
       class="container md:px-[20px] w-full flex flex-col gap-2 xl:gap-4 items-start relative top-full md:top-1/2 -translate-y-9/6 md:-translate-y-5/6"
     >
       <h1
-        class="font-amx-bold text-center md:text-left xl:text-center w-fit md:order-1 md:max-w-[400px] xl:max-w-[550px] text-balance leading-none h-fit text-2xl md:text-3xl lg:text-4xl text-white uppercase"
+        class="font-amx-bold text-center md:text-center xl:text-center w-fit md:order-1 md:max-w-[400px] xl:max-w-[550px] text-balance leading-none h-fit text-white uppercase"
         data-aos="fade-up"
       >
-        L1MAX AHORA EN TU CASA Y EN TU CELU
+        DISFRUTA DE L1MAX
+        <br /><span>SIN COSTO ADICIONAL</span>
       </h1>
-      <picture class="md:order-2">
+      <picture class="md:order-2 imgbanner">
         <img
-          src={logo_banner.src}
-          class="w-full h-auto object-cover max-w-[500px] md:max-w-[340px] xl:max-w-[540px]"
+          src={logo_banner2.src}
+          class="w-full h-auto object-cover"
           alt="Logo de L1Max"
         />
       </picture>
@@ -37,9 +38,143 @@ import Button from "@UI/Button.astro";
   </div>
 </section>
 <style>
+  .imgbanner {
+    margin-left: 28px;
+  }
+
+  h1 {
+    font-size: 53px;
+    padding-left: 50px;
+  }
+
+  h1 span {
+    background-color: #f1d135;
+    color: #000;
+    border-radius: 13px;
+    padding: 5px 25px;
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 39px;
+    font-style: italic;
+  }
+
   @media (max-width: 500px) {
     .bannerMobie {
-      margin-top: 44px !important;
+      margin-top: 44px;
+    }
+  }
+
+  section.secTabs h2 {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  @media (max-width: 500px) {
+    section.secTabs h2 {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 1599px) {
+    h1 {
+      font-size: 40px;
+      padding-left: 100px;
+    }
+
+    h1 span {
+      font-size: 30px;
+    }
+
+    .imgbanner img {
+      max-width: 412px !important;
+    }
+
+    .imgbanner {
+      margin-left: 76px;
+    }
+  }
+
+  @media (max-width: 1279px) {
+    h1 {
+      padding-left: 0;
+      text-align: center;
+      transform: translateY(40px);
+    }
+
+    .imgbanner {
+      margin-left: -25px;
+      transform: translateY(48px);
+    }
+  }
+
+  @media (max-width: 1023px) {
+    h1 {
+      font-size: 36px;
+    }
+
+    h1 span {
+      font-size: 26px;
+    }
+
+    .imgbanner img {
+      max-width: 347px !important;
+    }
+
+    h1,
+    .imgbanner {
+      transform: translateY(0px);
+    }
+
+    .imgbanner {
+      margin-left: -11px;
+      transform: translateY(10px);
+    }
+  }
+
+  @media (max-width: 767px) {
+    h1 {
+      margin: 0 auto;
+    }
+
+    .imgbanner {
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 500px) {
+    h1 {
+      font-size: 25px;
+    }
+
+    h1 span {
+      font-size: 18px;
+    }
+
+    .imgbanner img {
+      max-width: 266px !important;
+    }
+
+    .seccionbanner {
+      height: 126vw;
+    }
+
+    h1 span {
+      border-radius: 8px;
+      padding: 5px 14px;
+    }
+  }
+
+  @media (max-width: 440px) {
+    .seccionbanner {
+      height: 133vw;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .seccionbanner {
+      height: 134vw;
     }
   }
 </style>

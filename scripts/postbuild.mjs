@@ -111,21 +111,27 @@ const landingScript = `<script>window.__LANDING__=${JSON.stringify({
   author: deployMeta.author === 'unknown' ? undefined : deployMeta.author,
 })}</script>`;
 
-// --- Generar cms-output.txt con todo incluido ---
+// --- Generar outputs del CMS ---
 
-let output = `<!-- Generado: ${buildTimestampDisplay} -->\n${landingScript}\n${cssTag}\n\n${primaryBody}\n`;
-if (externalScripts.length) {
-  output += '\n' + externalScripts.join('\n') + '\n';
-}
-
-const outputPath = resolve(distDir, 'cms-output.txt');
-writeFileSync(outputPath, output, 'utf-8');
-
-console.log(`✅ cms-output.txt generado en ${outputPath}`);
-
-// Generar outputs para cada CMS-TARGET encontrado
 const extraCmsTargets = landingConfig.extraCmsTargets || [];
 const generatedTargets = [];
+
+// El header (timestamp + __LANDING__ + CSS link) va solo en el primer output con contenido.
+// Outputs siguientes llevan HTML limpio para no duplicar metadata ni estilos en la página del portal.
+const hasPrimaryContent = primaryBody.trim().length > 0;
+let headerEmitted = false;
+
+const outputPath = resolve(distDir, 'cms-output.txt');
+
+if (hasPrimaryContent) {
+  let output = `<!-- Generado: ${buildTimestampDisplay} -->\n${landingScript}\n${cssTag}\n\n${primaryBody}\n`;
+  if (externalScripts.length) output += '\n' + externalScripts.join('\n') + '\n';
+  writeFileSync(outputPath, output, 'utf-8');
+  console.log(`✅ cms-output.txt generado en ${outputPath}`);
+  headerEmitted = true;
+} else {
+  console.log(`ℹ️  cms-output.txt omitido — todo el contenido está distribuido en CMS-TARGETs`);
+}
 
 for (const [targetId, targetContent] of Object.entries(extractedTargets)) {
   const configEntry = extraCmsTargets.find(t => t.id === targetId);
@@ -133,7 +139,13 @@ for (const [targetId, targetContent] of Object.entries(extractedTargets)) {
     console.warn(`⚠️  CMS-TARGET "${targetId}" encontrado en el HTML pero sin configuración en extraCmsTargets — ignorado.`);
     continue;
   }
-  const targetOutput = `<!-- Generado: ${buildTimestampDisplay} (target: ${targetId}) -->\n${landingScript}\n${cssTag}\n\n${targetContent}\n`;
+  let targetOutput;
+  if (!headerEmitted) {
+    targetOutput = `<!-- Generado: ${buildTimestampDisplay} (target: ${targetId}) -->\n${landingScript}\n${cssTag}\n\n${targetContent}\n`;
+    headerEmitted = true;
+  } else {
+    targetOutput = `<!-- target: ${targetId} -->\n${targetContent}\n`;
+  }
   const targetOutputPath = resolve(distDir, `cms-output-${targetId}.txt`);
   writeFileSync(targetOutputPath, targetOutput, 'utf-8');
   console.log(`✅ cms-output-${targetId}.txt generado en ${targetOutputPath}`);
@@ -181,7 +193,7 @@ if (answer === 's' || answer === 'y') {
 
 // --- Preguntar si subir HTML al CMS ---
 
-if (landingConfig.cmsUrl) {
+if (hasPrimaryContent && landingConfig.cmsUrl && landingConfig.cmsContentId) {
   const rl2 = readline.createInterface({ input: process.stdin, output: process.stdout });
   const cmsAnswer = await new Promise((resolve) => {
     rl2.question('\n  ¿Subir HTML al CMS? (s/N): ', (ans) => resolve(ans.trim().toLowerCase()));

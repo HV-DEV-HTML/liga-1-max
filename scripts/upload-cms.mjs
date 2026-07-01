@@ -42,6 +42,10 @@ function parseArgs(argv) {
   const dryRun = args.includes('--dry-run');
   const targetIdx = args.indexOf('--target');
   const targetId = targetIdx !== -1 ? (args[targetIdx + 1] ?? null) : null;
+  if (targetIdx !== -1 && (!targetId || targetId.startsWith('--'))) {
+    console.error('\n❌  --target requiere un ID como argumento (ej: --target banner).\n');
+    process.exit(1);
+  }
   const knownFlags = new Set(['--dry-run', '--target']);
   const unknown = args.filter(a => a.startsWith('--') && !knownFlags.has(a));
   if (unknown.length > 0) {
@@ -154,8 +158,11 @@ async function login(page, loginUrl, username, password) {
 
 async function openEditDialog(page, cmsUrl, contentId) {
   console.log('  → Navegando a la página del portal...');
-  // El portal redirige a una URL con estado (!ut/p/z1/...)
-  await page.goto(cmsUrl, { waitUntil: 'networkidle', timeout: 30000 });
+  // El portal redirige a una URL con estado (!ut/p/z1/...).
+  // networkidle falla en portales Dojo por el polling periódico — se usa domcontentloaded
+  // y luego se espera explícitamente a que la URL incluya el segmento de estado.
+  await page.goto(cmsUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
+  await page.waitForURL('**!ut/**', { timeout: 20000 });
   const stateUrl = page.url();
 
   // Abre el editor WCM directamente como página completa (sin pasar por la UI del portlet).
@@ -163,7 +170,7 @@ async function openEditDialog(page, cmsUrl, contentId) {
   // desde el contexto del toolbar el portal devuelve HTTP 400 al resolver el dialog URI.
   const dialogUrl = `${stateUrl}?uri=dialog:wcm&action=edit&docid=com.aptrix.pluto.content.Content/${contentId}`;
   console.log('  → Abriendo editor WCM...');
-  await page.goto(dialogUrl, { waitUntil: 'networkidle', timeout: 30000 });
+  await page.goto(dialogUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
 
   // Verifica que abrió el editor y no una página de error o un portlet distinto
   const pageTitle = await page.title();
@@ -179,33 +186,45 @@ async function openEditDialog(page, cmsUrl, contentId) {
 
 async function fillAndSave(page, htmlContent) {
   console.log('  → Escribiendo contenido HTML...');
-  // Se usa evaluate() para asignar textarea.value directo al DOM. El fill() de Playwright
-  // opera vía CDP Input.insertText, que en headless no commitea el valor antes de que el
-  // form submission del WCM lo lea — el servidor recibe el contenido viejo sin error visible.
+  // Se usa el native input value setter + events para que Dojo detecte el cambio.
+  // El fill() de Playwright opera vía CDP Input.insertText (falla en headless) y el
+  // simple textarea.value = html tampoco notifica al modelo interno de Dojo — el servidor
+  // recibe el contenido viejo sin error visible.
   await page.evaluate((html) => {
-    document.querySelector('textarea[name*="html_text_area"]').value = html;
+    const ta = document.querySelector('textarea[name*="html_text_area"]');
+    const setter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, 'value').set;
+    setter.call(ta, html);
+    ta.dispatchEvent(new Event('input', { bubbles: true }));
+    ta.dispatchEvent(new Event('change', { bubbles: true }));
   }, htmlContent);
 
   console.log('  → Guardando...');
-  // "Guardar y cerrar" es un link Dojo (href="javascript:;"). Se usa .click() nativo del DOM
-  // para bypassear los checks de visibilidad de Playwright. Se prueban múltiples textos porque
-  // el idioma del editor WCM puede variar según el locale de la sesión del portal.
-  const saveResult = await page.evaluate(() => {
-    const links = Array.from(document.querySelectorAll('a'));
-    const link =
-      links.find(a => a.textContent?.trim() === 'Guardar y cerrar') ||
-      links.find(a => a.textContent?.trim() === 'Save and Close') ||
-      links.find(a => a.textContent?.toLowerCase().includes('guardar')) ||
-      links.find(a => a.textContent?.toLowerCase().includes('save and close'));
+  // "Guardar y cerrar" en WCM es un <a id="save_and_close"> dentro de un <td class="wcmComboButtonLeft">,
+  // no un <button>. Se busca por id primero (más robusto) y se cae a búsqueda por texto
+  // para cubrir el locale inglés o cambios de versión del portal.
+  //
+  // Patrón Promise.all: waitForNavigation debe estar registrado ANTES de que el click
+  // dispare la navegación; de lo contrario Playwright puede perderse el evento.
+  const [, saveResult] = await Promise.all([
+    page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 30000 }),
+    page.evaluate(() => {
+      const byId = document.getElementById('save_and_close');
+      if (byId) { byId.click(); return true; }
 
-    if (link) { link.click(); return true; }
-    return false;
-  });
+      const links = Array.from(document.querySelectorAll('a'));
+      const link =
+        links.find(a => a.textContent?.trim() === 'Guardar y cerrar') ||
+        links.find(a => a.textContent?.trim() === 'Save and Close') ||
+        links.find(a => a.textContent?.toLowerCase().includes('guardar')) ||
+        links.find(a => a.textContent?.toLowerCase().includes('save and close'));
+
+      if (link) { link.click(); return true; }
+      return false;
+    }),
+  ]);
 
   if (!saveResult) throw new Error('No se encontró el link de guardado en el editor WCM');
 
-  // Al guardar, el portal navega fuera del form de edición
-  await page.waitForLoadState('networkidle', { timeout: 30000 });
   console.log('  ✔ Contenido guardado');
 }
 

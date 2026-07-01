@@ -1,22 +1,29 @@
 {
-  "name": "prepago-movil",
+  "name": "liga-1-max",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "predev": "node scripts/check-init.mjs",
     "dev": "astro dev",
-    "build": "astro build",
+    "prebuild": "node scripts/check-init.mjs",
+    "build": "astro build && node scripts/postbuild.mjs",
     "preview": "astro preview",
+    "init-landing": "node scripts/init-landing.mjs",
+    "upload-mosaic": "node scripts/upload-mosaic.mjs",
+    "upload-cms": "node scripts/upload-cms.mjs",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/vue": "^5.1.1",
     "@tailwindcss/vite": "^4.0.6",
     "aos": "3.0.0-beta.6",
-    "astro": "^5.3.0",
-    "axios": "^1.12.2",
+    "astro": "^6.4.7",
+    "gsap": "^3.15.0",
     "just-validate": "^4.3.0",
     "swiper": "^11.2.2",
-    "tailwindcss": "^4.0.6",
-    "vue": "^3.5.22"
+    "tailwindcss": "^4.0.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "playwright": "^1.61.1"
   }
 }

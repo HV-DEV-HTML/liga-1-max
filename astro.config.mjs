@@ -1,22 +1,29 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { readFileSync } from 'fs';
 
-import tailwindcss from '@tailwindcss/vite';
+const landingConfig = JSON.parse(
+  readFileSync(new URL('./landing.config.json', import.meta.url), 'utf-8')
+);
 
-// import vue from '@astrojs/vue';
+const vitePlugins = [];
+
+if (landingConfig.useTailwind) {
+  const tailwindcss = (await import('@tailwindcss/vite')).default;
+  vitePlugins.push(tailwindcss());
+}
 
 // https://astro.build/config
 export default defineConfig({
   compressHTML: false,
-
   build: {
     assets: '_assets',
-    assetsPrefix: 'https://www.claro.com.pe/assets/havas/liga-1-max'
+    assetsPrefix: landingConfig.assetsPrefix,
   },
-
   vite: {
-    plugins: [tailwindcss()]
+    build: {
+      assetsInlineLimit: 0,
+    },
+    plugins: vitePlugins,
   },
-
-  // integrations: [vue()]
 });

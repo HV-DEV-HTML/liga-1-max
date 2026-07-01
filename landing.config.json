@@ -1,0 +1,23 @@
+{
+  "initialized": true,
+  "useTailwind": true,
+  "name": "Liga 1 Max",
+  "slug": "liga-1-max",
+  "mosaicFolder": "liga-1-max",
+  "assetsPrefix": "https://www.claro.com.pe/assets/havas/liga-1-max",
+  "cmsUrl": "https://pe-backoffice-portal.prod.clarodigital.net/wps/myportal/pe/pcc/personas/l1max",
+  "publicUrl": "https://test-claro-pe.prod.clarodigital.net/personas/l1max",
+  "cmsContentId": "",
+  "_cmsContentId_howto": "UUID del componente 'CP HTML Avanzado' en WCM. Para descubrirlo: activar Modalidad de edición en el portal y ejecutar el snippet de consola del README §Descubrir el cmsContentId.",
+  "extraCmsTargets": [
+    {
+      "id": "banner",
+      "cmsContentId": "fb3b3f8b-f6b3-4481-8e71-ab71b29a79d5"
+    },
+    {
+      "id": "sliderTabla",
+      "cmsContentId": "b11bb66f-3618-47fb-8f36-cd9bd555e783"
+    }
+  ],
+  "basecampUrl": ""
+}

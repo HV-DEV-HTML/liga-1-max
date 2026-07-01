@@ -1,50 +1,129 @@
 ---
-import banner_mobile from "@/assets/banner_mobilev6.webp";
-import banner_tablet from "@/assets/banner_tabletv2.webp";
-import banner_desktop from "@/assets/banner_desktopv2.webp";
-import logo_banner2 from "@/assets/logo_bannerv4.webp";
-import Button from "@UI/Button.astro";
+import banner_mobile_mobilev3 from "@/assets/banner_mobile_mobilev3.webp";
+import banner_tablet_mobilev4 from "@/assets/banner_tablet_mobilev4.webp";
+import banner_desktop_mobilev3 from "@/assets/banner_desktop_mobilev3.webp";
+import banner_mobilev10 from "@/assets/banner_mobilev10.webp";
+import banner_tabletv11 from "@/assets/banner_tabletv11.webp";
+import banner_desktopv9 from "@/assets/banner_desktopv9.webp";
+import logo_banner_hogar3 from "@/assets/logo_banner_hogar3.webp";
+import logo_banner_movil3 from "@/assets/logo_banner_movil3.webp";
 ---
 
 <section class="p-0 md:pb-4 relative -mb-10 lg:-mb-30 xl:-mb-64 seccionbanner">
-  <picture class="flex w-full h-auto relative">
-    <source media="(min-width: 1200px)" srcset={banner_desktop.src} />
-    <source media="(min-width: 768px)" srcset={banner_tablet.src} />
+  <picture class="w-full h-auto relative pictureBannerFondo picturebannerMovil">
+    <source media="(min-width: 1200px)" srcset={banner_desktop_mobilev3.src} />
+    <source media="(min-width: 768px)" srcset={banner_tablet_mobilev4.src} />
     <img
       class="w-full h-full object-cover"
-      src={banner_mobile.src}
+      src={banner_mobile_mobilev3.src}
       alt="LIGA 1 TE APUESTO"
     />
   </picture>
-  <div class="absolute top-0 w-full h-full left-0 z-10 bannerMobie">
+  <picture class="w-full h-auto relative pictureBannerFondo picturebannerHogar">
+    <source media="(min-width: 1200px)" srcset={banner_desktopv9.src} />
+    <source media="(min-width: 768px)" srcset={banner_tabletv11.src} />
+    <img
+      class="w-full h-full object-cover"
+      src={banner_mobilev10.src}
+      alt="LIGA 1 TE APUESTO"
+    />
+  </picture>
+  <div class="absolute top-0 w-full left-0 z-10 bannerMobie">
     <div
-      class="container md:px-[20px] w-full flex flex-col gap-2 xl:gap-4 items-start relative top-full md:top-1/2 -translate-y-9/6 md:-translate-y-5/6"
+      class="contentTextBanner container md:px-[20px] w-full flex gap-2 xl:gap-4 relative"
     >
       <h1
-        class="font-amx-bold text-center md:text-center xl:text-center w-fit md:order-1 md:max-w-[400px] xl:max-w-[550px] text-balance leading-none h-fit text-white uppercase"
+        class="font-amx-bold md:text-center w-fit md:order-1 md:max-w-[400px] xl:max-w-[550px] text-balance leading-none h-fit text-white uppercase"
         data-aos="fade-up"
       >
         DISFRUTA DE L1MAX
         <br /><span>SIN COSTO ADICIONAL</span>
       </h1>
-      <picture class="md:order-2 imgbanner">
-        <img
-          src={logo_banner2.src}
-          class="w-full h-auto object-cover"
-          alt="Logo de L1Max"
-        />
-      </picture>
+      <div class="imagenesBanner">
+        <picture class="md:order-2 imgbanner hogar">
+          <img
+            src={logo_banner_hogar3.src}
+            class="h-auto object-cover"
+            alt="Logo de L1Max"
+          />
+        </picture>
+        <picture class="md:order-2 imgbanner movil">
+          <img
+            src={logo_banner_movil3.src}
+            class="w-full h-auto object-cover"
+            alt="Logo de L1Max"
+          />
+        </picture>
+      </div>
     </div>
   </div>
 </section>
+
 <style>
-  .imgbanner {
-    margin-left: 28px;
+  picture.picturebannerMovil,
+  picture.picturebannerHogar {
+    display: flex;
+  }
+
+  picture.picturebannerMovil {
+    display: none !important;
+  }
+
+  :global(body.bannerMovil) picture.picturebannerMovil {
+    display: flex !important;
+  }
+
+  :global(body.bannerMovil) picture.picturebannerHogar {
+    display: none !important;
+  }
+
+  section.seccionbanner .bannerMobie {
+    display: flex;
+    align-items: center;
+    height: 546px !important;
+  }
+
+  section.seccionbanner .imagenesBanner {
+    height: 344px;
+    display: flex;
+    align-items: center;
+  }
+
+  section.seccionbanner .imagenesBanner img {
+    width: 500px;
+  }
+
+  @media (max-width: 1199px) {
+    .pictureBannerFondo {
+      transform: scale(1.01);
+    }
+  }
+
+  section.seccionbanner .container {
+    flex-direction: row-reverse !important;
+    justify-content: space-between !important;
+    align-items: center;
+  }
+
+  .imgbanner.movil,
+  .imgbanner.hogar {
+    display: none;
+  }
+
+  :global(body.bannerMovil) .imgbanner,
+  :global(body.bannerHogar) .imgbanner,
+  :global(body.bannerMovil) .imgbanner.hogar,
+  :global(body.bannerHogar) .imgbanner.movil {
+    display: none;
+  }
+
+  :global(body.bannerMovil) .imgbanner.movil,
+  .imgbanner.hogar {
+    display: block;
   }
 
   h1 {
     font-size: 53px;
-    padding-left: 50px;
   }
 
   h1 span {
@@ -58,26 +137,47 @@ import Button from "@UI/Button.astro";
     font-style: italic;
   }
 
-  @media (max-width: 500px) {
-    .bannerMobie {
-      margin-top: 44px;
+  @media (max-width: 1780px) {
+    section.seccionbanner .bannerMobie {
+      height: 499px !important;
     }
   }
 
-  section.secTabs h2 {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  @media (max-width: 1736px) {
+    section.seccionbanner .bannerMobie {
+      height: 467px !important;
+    }
   }
 
-  @media (max-width: 500px) {
-    section.secTabs h2 {
-      flex-direction: column;
+  @media (max-width: 1710px) {
+    section.seccionbanner .bannerMobie {
+      display: flex;
+      align-items: center;
+      height: 486px !important;
+    }
+  }
+
+  @media (max-width: 1656px) {
+    section.seccionbanner .bannerMobie {
+      height: 447px !important;
+    }
+  }
+
+  @media (max-width: 1606px) {
+    section.seccionbanner .bannerMobie {
+      height: 415px !important;
     }
   }
 
   @media (max-width: 1599px) {
+    section.seccionbanner .imagenesBanner {
+      height: 206px;
+    }
+
+    section.seccionbanner .bannerMobie {
+      height: 428px !important;
+    }
+
     h1 {
       font-size: 40px;
       padding-left: 100px;
@@ -88,30 +188,100 @@ import Button from "@UI/Button.astro";
     }
 
     .imgbanner img {
-      max-width: 412px !important;
+      max-width: 390px !important;
     }
 
     .imgbanner {
-      margin-left: 76px;
+      margin-right: 100px;
+    }
+  }
+
+  @media (max-width: 1503px) {
+    h1 {
+      padding-left: 0px;
+    }
+
+    .imgbanner {
+      margin-right: 0px;
+    }
+  }
+
+  @media (max-width: 1440px) {
+    section.seccionbanner .bannerMobie {
+      height: 406px !important;
+    }
+
+    h1 {
+      padding-left: 30px;
+    }
+
+    .imgbanner {
+      margin-right: 30px;
+    }
+  }
+
+  @media (max-width: 1390px) {
+    section.seccionbanner .bannerMobie {
+      height: 379px !important;
+    }
+  }
+
+  @media (max-width: 1330px) {
+    section.seccionbanner .bannerMobie {
+      height: 377px !important;
     }
   }
 
   @media (max-width: 1279px) {
+    section.seccionbanner .imagenesBanner {
+      height: 243px;
+    }
+
+    .imgbanner img {
+      max-width: 353px !important;
+    }
+
+    section.seccionbanner .bannerMobie {
+      height: 347px !important;
+    }
+
     h1 {
       padding-left: 0;
-      text-align: center;
-      transform: translateY(40px);
     }
 
     .imgbanner {
-      margin-left: -25px;
-      transform: translateY(48px);
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+  }
+
+  @media (max-width: 1199px) {
+    section.seccionbanner .contentTextBanner {
+      transform: none !important;
+      top: 0 !important;
+    }
+
+    .imgbanner img {
+      max-width: 370px !important;
+    }
+
+    .imagenesBanner {
+      transform: translateY(268px);
+    }
+
+    section.seccionbanner .bannerMobie {
+      height: auto !important;
+    }
+
+    section.seccionbanner .imagenesBanner {
+      height: 259px;
     }
   }
 
   @media (max-width: 1023px) {
     h1 {
       font-size: 36px;
+      width: 341px !important;
     }
 
     h1 span {
@@ -119,27 +289,90 @@ import Button from "@UI/Button.astro";
     }
 
     .imgbanner img {
-      max-width: 347px !important;
-    }
-
-    h1,
-    .imgbanner {
-      transform: translateY(0px);
+      max-width: 370px !important;
     }
 
     .imgbanner {
       margin-left: -11px;
-      transform: translateY(10px);
+    }
+
+    .imagenesBanner {
+      transform: translateY(122px) translateX(31px);
+    }
+
+    section.seccionbanner .contentTextBanner {
+      padding-top: 40px;
+      align-items: start;
+    }
+  }
+
+  @media (max-width: 900px) {
+    h1 {
+      margin-left: 15px;
+    }
+
+    .imagenesBanner {
+      transform: translateY(86px) translateX(27px);
+    }
+  }
+
+  @media (max-width: 850px) {
+    .imagenesBanner {
+      transform: translateY(111px) translateX(5px);
+    }
+  }
+
+  @media (max-width: 800px) {
+    .imagenesBanner {
+      transform: translateY(85px) translateX(-10px);
     }
   }
 
   @media (max-width: 767px) {
     h1 {
       margin: 0 auto;
+      text-align: center;
     }
 
     .imgbanner {
       margin: 0 auto;
+    }
+
+    :global(body.bannerMovil) .imgbanner.movil,
+    :global(body.bannerHogar) .imgbanner.hogar {
+      margin: 0 auto;
+    }
+
+    :global(body.bannerMovil) .imgbanner.movil img,
+    :global(body.bannerHogar) .imgbanner.hogar img {
+      max-width: 250px !important;
+    }
+
+    section.seccionbanner {
+      height: 136vw;
+    }
+
+    section.seccionbanner .contentTextBanner {
+      justify-content: space-between !important;
+      align-items: center;
+      flex-direction: column !important;
+      height: 119vw;
+    }
+
+    .imagenesBanner {
+      transform: none;
+    }
+  }
+
+  @media (max-width: 630px) {
+    section.seccionbanner .contentTextBanner {
+      height: 124vw;
+    }
+  }
+
+  @media (max-width: 552px) {
+    section.seccionbanner .contentTextBanner {
+      height: 127vw;
     }
   }
 
@@ -150,31 +383,46 @@ import Button from "@UI/Button.astro";
 
     h1 span {
       font-size: 18px;
-    }
-
-    .imgbanner img {
-      max-width: 266px !important;
-    }
-
-    .seccionbanner {
-      height: 126vw;
-    }
-
-    h1 span {
       border-radius: 8px;
       padding: 5px 14px;
+    }
+
+    section.seccionbanner {
+      height: 130vw;
+    }
+
+    section.seccionbanner .contentTextBanner {
+      height: 118vw;
+    }
+
+    section.seccionbanner .imagenesBanner {
+      height: 137px;
+    }
+
+    .imgbanner img,
+    :global(body.bannerMovil) .imgbanner.movil img,
+    :global(body.bannerHogar) .imgbanner.hogar img {
+      max-width: 260px !important;
     }
   }
 
   @media (max-width: 440px) {
-    .seccionbanner {
-      height: 133vw;
+    section.seccionbanner {
+      height: 142vw;
+    }
+
+    section.seccionbanner .contentTextBanner {
+      height: 128vw;
     }
   }
 
   @media (max-width: 400px) {
-    .seccionbanner {
-      height: 134vw;
+    section.seccionbanner {
+      height: 147vw;
+    }
+
+    section.seccionbanner .contentTextBanner {
+      height: 131vw;
     }
   }
 </style>

@@ -1,0 +1,146 @@
+---
+import itemMovil1 from "@/assets/itemMovil1.svg";
+import itemMovil2 from "@/assets/itemMovil2.svg";
+import itemHogar1 from "@/assets/itemHogar1.svg";
+import itemHogar2 from "@/assets/itemHogar2.svg";
+import itemHogar3 from "@/assets/itemHogar3.svg";
+---
+
+<section class="relative z-10 lg:max-w-[1080px] mx-auto secTabs secTabsdos">
+  <div class="container flex flex-col gap-6 lg:gap-10">
+    <div class="contentInfoTabs">
+      <div class="content " cat="SOY POSTPAGO">
+        <p class="titleBene">Lo que incluye tu plan:</p>
+        <div class="itemsBeneficios">
+          <div class="item">
+            <div class="contentIcon">
+              <img src={itemMovil1.src} alt="" />
+            </div>
+            <p>
+              Míralo desde tu <b>dispositivo móvil.</b>
+            </p>
+          </div>
+          <div class="item">
+            <div class="contentIcon">
+              <img src={itemMovil2.src} alt="" />
+            </div>
+            <p>
+              <b>Sin costo adicional</b> si tu plan postpago Max lo incluye.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="content active" cat="SOY HOGAR">
+        <p class="titleBene">Lo que incluye tu plan:</p>
+        <div class="itemsBeneficios">
+          <div class="item">
+            <div class="contentIcon">
+              <img src={itemHogar1.src} alt="" />
+            </div>
+            <p>
+              Míralo desde tu <b>cel, tablet o compu.</b>
+            </p>
+          </div>
+          <div class="item">
+            <div class="contentIcon">
+              <img src={itemHogar2.src} alt="" />
+            </div>
+            <p>
+              Disfrútalo <b>hasta en 2 dispositivos en simultáneo.</b>
+            </p>
+          </div>
+          <div class="item">
+            <div class="contentIcon">
+              <img src={itemHogar3.src} alt="" />
+            </div>
+            <p>
+              <b>Sin costo adicional</b> si tu plan hogar lo incluye.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contentInfoTabs {
+    border-radius: 0px;
+    background: #fff;
+    box-shadow: none;
+    padding: 0px;
+    width: auto;
+    margin: 0 auto;
+  }
+  .contentInfoTabs .content {
+    display: none;
+  }
+  .contentInfoTabs .content.active {
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+  }
+  .contentInfoTabs .content .titleBene {
+    color: #000;
+    text-align: center;
+    font-family: AMX;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+  }
+  .contentInfoTabs .content .itemsBeneficios {
+    display: flex;
+    gap: 70px;
+  }
+  .contentInfoTabs .content .itemsBeneficios .item {
+    display: flex;
+    gap: 34px;
+    max-width: 270px;
+    align-items: center;
+  }
+  .contentInfoTabs .content .itemsBeneficios .item p {
+    color: #000;
+    font-family: "AMX Regular";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .contentInfoTabs .content .itemsBeneficios .item p b {
+    font-family: "AMX Medium";
+  }
+  .contentInfoTabs .content .itemsBeneficios .item .contentIcon {
+    width: 45px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .contentInfoTabs .content .itemsBeneficios .item .contentIcon img {
+    max-width: none;
+  }
+
+  @media (max-width: 1023px) {
+    .contentInfoTabs {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 850px) {
+    .contentInfoTabs .content .itemsBeneficios {
+      flex-direction: column;
+      gap: 40px;
+    }
+    .contentInfoTabs .content .itemsBeneficios .item {
+      max-width: 488px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .contentInfoTabs .content .itemsBeneficios .item {
+      gap: 20px;
+    }
+    .contentInfoTabs {
+      position: relative;
+    }
+  }
+</style>

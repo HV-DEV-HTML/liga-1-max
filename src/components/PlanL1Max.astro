@@ -762,3 +762,36 @@ import "swiper/css/bundle";
     activarSecciones(tipoTab);
   }) as EventListener);
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const query2 = window.location.search.replace("?", "").replace(/\/$/, "").toLowerCase();
+      const secTutorial = document.querySelector(".tutorialTabs");
+
+      const scrollToTabs2 = () => {
+        if (!secTutorial) return;
+        const y =
+          secTutorial.getBoundingClientRect().top +
+          window.pageYOffset -
+          100;
+
+        window.scrollTo({
+          top: y,
+          behavior: "smooth"
+        });
+      };
+
+      const clickTab2 = (selector) => {
+        const tab2 = document.querySelector(selector);
+        if (tab2) tab2.click();
+      };
+
+      if (query2 === "=movil-tutorial") {
+        setTimeout(() => {
+          clickTab2('.tab[cat="SOY POSTPAGO"]');
+        }, 500);
+setTimeout(() => {
+          scrollToTabs2();
+        }, 1500);
+      }
+    });
+  </script>

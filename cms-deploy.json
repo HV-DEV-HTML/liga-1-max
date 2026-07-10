@@ -2,10 +2,10 @@
   "landing": "Liga 1 Max",
   "slug": "liga-1-max",
   "remote": "git@havas:HV-DEV-HTML/liga-1-max.git",
-  "commit": "5574f5e13183a494a2e0e92e2030cc2fbf31d17c",
+  "commit": "d321396e1a175cd532a6d92c8d861635524579da",
   "branch": "main",
-  "timestamp": "2026-07-09T16:37:12.939Z",
-  "author": "diegocastillo05",
+  "timestamp": "2026-07-10T16:45:56.576Z",
+  "author": "Javier Castro",
   "cmsUrl": "https://pe-backoffice-portal.prod.clarodigital.net/wps/myportal/pe/pcc/personas/l1max",
   "publicUrl": "https://test-claro-pe.prod.clarodigital.net/personas/l1max",
   "mosaic": "https://www.claro.com.pe/assets/havas/liga-1-max"

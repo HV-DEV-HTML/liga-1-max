@@ -34,10 +34,9 @@ import "swiper/css/bundle";
     </div>
     <div
       class="flex flex-row justify-center items-center gap-4 pt-5 md:pt-0 mx-auto md:col-span-2 order-3 lg:absolute lg:left-[350px] lg:bottom-3 2xl:-bottom-1"
-      style="--swiper-navigation-size: 14px;--swiper-navigation-color: #fff"
     >
       <div
-        class="swiper-button-prev relative mt-0 after:font-black border-2 text-claro hover:text-white border-claro bg-transparent hover:border-claro hover:bg-claro rounded-full left-0 w-[44px] h-[44px] transition-colors duration-200 ease-out"
+        class="swiper-button-prev relative top-0 mt-0 after:font-black border-2 text-claro hover:text-white border-claro bg-transparent hover:border-claro hover:bg-claro rounded-full left-0 w-[44px] h-[44px] transition-colors duration-200 ease-out"
       >
       </div>
       <div
@@ -45,7 +44,7 @@ import "swiper/css/bundle";
       >
       </div>
       <div
-        class="swiper-button-next relative mt-0 after:font-black border-2 text-claro hover:text-white border-claro bg-transparent hover:border-claro hover:bg-claro rounded-full right-0 w-[44px] h-[44px] transition-colors duration-200 ease-out"
+        class="swiper-button-next relative top-0 mt-0 after:font-black border-2 text-claro hover:text-white border-claro bg-transparent hover:border-claro hover:bg-claro rounded-full right-0 w-[44px] h-[44px] transition-colors duration-200 ease-out"
       >
       </div>
     </div>
@@ -95,6 +94,47 @@ import "swiper/css/bundle";
 <style>
   .section_reconocimientos .description_slider a {
     color: #0093a3;
+  }
+
+  /* Swiper's own line-height/font metrics for the fraction text render with
+     different vertical space in Safari than Chrome, so it doesn't sit
+     vertically centered against the 44px arrow buttons via the parent's
+     items-center alone. Giving it its own fixed-height flex box makes the
+     centering deterministic regardless of font metrics. */
+  .section_reconocimientos .swiper-pagination {
+    display: flex;
+    align-items: center;
+    height: 44px;
+  }
+
+  /* Custom CSS arrows instead of the swiper-icons font: that font loads via a
+     data: URI @font-face, which some CSP configurations block, leaving the
+     literal "prev"/"next" fallback text visible instead of an arrow glyph. */
+  .section_reconocimientos .swiper-button-prev,
+  .section_reconocimientos .swiper-button-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section_reconocimientos .swiper-button-prev::after,
+  .section_reconocimientos .swiper-button-next::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-style: solid;
+    border-color: currentColor;
+    border-width: 0 2px 2px 0;
+  }
+
+  .section_reconocimientos .swiper-button-prev::after {
+    transform: rotate(135deg);
+    margin-left: 4px;
+  }
+
+  .section_reconocimientos .swiper-button-next::after {
+    transform: rotate(-45deg);
+    margin-right: 4px;
   }
 </style>
 

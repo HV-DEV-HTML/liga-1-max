@@ -10,7 +10,7 @@
   --color-claro: #DA291C;
   --color-claro-dark: #9F1C12;
 }
-
+/*
 @utility container {
   @media (width >= theme(--breakpoint-xl)) {
     max-width: 1280px;
@@ -19,7 +19,7 @@
     max-width: var(--breakpoint-container-2xl);
   }
 }
-
+*/
 :root{
   --swiper-pagination-bullet-width: 10px;
   --swiper-pagination-bullet-height: 10px;
